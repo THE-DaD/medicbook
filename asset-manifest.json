@@ -1,24 +1,23 @@
 {
   "files": {
-    "app.js": "/medicbook/static/js/app.3d26b128.chunk.js",
-    "app.js.map": "/medicbook/static/js/app.3d26b128.chunk.js.map",
+    "app.js": "/medicbook/static/js/app.b8f19bf2.chunk.js",
+    "app.js.map": "/medicbook/static/js/app.b8f19bf2.chunk.js.map",
     "runtime~app.js": "/medicbook/static/js/runtime~app.d7ba104d.js",
     "runtime~app.js.map": "/medicbook/static/js/runtime~app.d7ba104d.js.map",
-    "static/js/2.e94f14cb.chunk.js": "/medicbook/static/js/2.e94f14cb.chunk.js",
-    "static/js/2.e94f14cb.chunk.js.map": "/medicbook/static/js/2.e94f14cb.chunk.js.map",
+    "static/js/2.734dce2e.chunk.js": "/medicbook/static/js/2.734dce2e.chunk.js",
+    "static/js/2.734dce2e.chunk.js.map": "/medicbook/static/js/2.734dce2e.chunk.js.map",
     "favicon-16.png": "/medicbook/favicon-16.png",
     "favicon-32.png": "/medicbook/favicon-32.png",
     "favicon.ico": "/medicbook/favicon.ico",
     "index.html": "/medicbook/index.html",
     "manifest.json": "/medicbook/manifest.json",
     "serve.json": "/medicbook/serve.json",
-    "static/js/2.e94f14cb.chunk.js.LICENSE.txt": "/medicbook/static/js/2.e94f14cb.chunk.js.LICENSE.txt",
+    "static/js/2.734dce2e.chunk.js.LICENSE.txt": "/medicbook/static/js/2.734dce2e.chunk.js.LICENSE.txt",
     "static/media/BottomBannerRectengles.png": "/medicbook/static/media/BottomBannerRectengles.220a7d5a.png",
     "static/media/Group 58 (1).png": "/medicbook/static/media/Group 58 (1).26e270ab.png",
     "static/media/MedicBook.1.png": "/medicbook/static/media/MedicBook.1.56a62072.png",
     "static/media/MedicBook.png": "/medicbook/static/media/MedicBook.56a62072.png",
     "static/media/RecapBackground.png": "/medicbook/static/media/RecapBackground.f20d37e2.png",
-    "static/media/TopBanner.svg": "/medicbook/static/media/TopBanner.db6a8d6a.svg",
     "static/media/TopBannerRectengles.png": "/medicbook/static/media/TopBannerRectengles.ca867391.png",
     "static/media/TriviaIcon.png": "/medicbook/static/media/TriviaIcon.6d2464fd.png",
     "static/media/YoutubeIcon.png": "/medicbook/static/media/YoutubeIcon.ec4688df.png",
@@ -37,7 +36,7 @@
   },
   "entrypoints": [
     "static/js/runtime~app.d7ba104d.js",
-    "static/js/2.e94f14cb.chunk.js",
-    "static/js/app.3d26b128.chunk.js"
+    "static/js/2.734dce2e.chunk.js",
+    "static/js/app.b8f19bf2.chunk.js"
   ]
 }
