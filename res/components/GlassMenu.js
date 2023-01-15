@@ -4,6 +4,7 @@ import MaterialButton from './MaterialButton'
 import {global} from '../../src/global/Style'
 import { NavigationEvents } from 'react-navigation';
 import {Material} from '../../src/mainClasses/Material'
+import Spotify from 'react-spotify-embed'
 
 
 let icon_size = 80
@@ -137,6 +138,7 @@ function getGlassMenu(props){
                         <Image style={{width: '100%', height: '100%', resizeMode: 'contain'}} source={require('../assets/glassMenu/trivia_icon.png')}  />
                     </TouchableOpacity>
                 </View> */}
+                {props.topicDisplayName == "מדיקאסט"? <Spotify style={{ width: '70%', height: 300, marginTop: '-80%', marginLeft: 100, marginRight: 'auto', zIndex: 30}} link={"https://open.spotify.com/episode/6U3LWmoEwYac7fshMEMZS6?si=5323e56f5414414b&nd=1"} /> : <View></View>}
             </View>  
     )
         

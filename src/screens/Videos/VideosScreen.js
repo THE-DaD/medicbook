@@ -42,7 +42,7 @@ export default function VideoScreen({navigation}){
 
     return(
         <View style={styles.container}>
-            <BackButton />
+            <BackButton onPress = {() => {navigation.goBack()}}/>
             {videos.length == 0? <Text style={styles.noVideos}>אין סרטונים בנושא זה</Text> :
                 <FlatList style={styles.videoList} data={videos}
                     numColumns={2}
