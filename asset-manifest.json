@@ -1,7 +1,7 @@
 {
   "files": {
-    "app.js": "/medicbook/static/js/app.99b03b76.chunk.js",
-    "app.js.map": "/medicbook/static/js/app.99b03b76.chunk.js.map",
+    "app.js": "/medicbook/static/js/app.9e3240ce.chunk.js",
+    "app.js.map": "/medicbook/static/js/app.9e3240ce.chunk.js.map",
     "runtime~app.js": "/medicbook/static/js/runtime~app.d7ba104d.js",
     "runtime~app.js.map": "/medicbook/static/js/runtime~app.d7ba104d.js.map",
     "static/js/2.5509ec02.chunk.js": "/medicbook/static/js/2.5509ec02.chunk.js",
@@ -41,6 +41,6 @@
   "entrypoints": [
     "static/js/runtime~app.d7ba104d.js",
     "static/js/2.5509ec02.chunk.js",
-    "static/js/app.99b03b76.chunk.js"
+    "static/js/app.9e3240ce.chunk.js"
   ]
 }
