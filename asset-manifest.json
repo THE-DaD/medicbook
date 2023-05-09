@@ -1,18 +1,18 @@
 {
   "files": {
-    "app.js": "/medicbook/static/js/app.03191a6a.chunk.js",
-    "app.js.map": "/medicbook/static/js/app.03191a6a.chunk.js.map",
+    "app.js": "/medicbook/static/js/app.4636296b.chunk.js",
+    "app.js.map": "/medicbook/static/js/app.4636296b.chunk.js.map",
     "runtime~app.js": "/medicbook/static/js/runtime~app.d7ba104d.js",
     "runtime~app.js.map": "/medicbook/static/js/runtime~app.d7ba104d.js.map",
-    "static/js/2.7b0db37d.chunk.js": "/medicbook/static/js/2.7b0db37d.chunk.js",
-    "static/js/2.7b0db37d.chunk.js.map": "/medicbook/static/js/2.7b0db37d.chunk.js.map",
+    "static/js/2.f467f37c.chunk.js": "/medicbook/static/js/2.f467f37c.chunk.js",
+    "static/js/2.f467f37c.chunk.js.map": "/medicbook/static/js/2.f467f37c.chunk.js.map",
     "favicon-16.png": "/medicbook/favicon-16.png",
     "favicon-32.png": "/medicbook/favicon-32.png",
     "favicon.ico": "/medicbook/favicon.ico",
     "index.html": "/medicbook/index.html",
     "manifest.json": "/medicbook/manifest.json",
     "serve.json": "/medicbook/serve.json",
-    "static/js/2.7b0db37d.chunk.js.LICENSE.txt": "/medicbook/static/js/2.7b0db37d.chunk.js.LICENSE.txt",
+    "static/js/2.f467f37c.chunk.js.LICENSE.txt": "/medicbook/static/js/2.f467f37c.chunk.js.LICENSE.txt",
     "static/media/BottomBannerRectengles.png": "/medicbook/static/media/BottomBannerRectengles.b459ef76.png",
     "static/media/Group 58 (1).png": "/medicbook/static/media/Group 58 (1).26e270ab.png",
     "static/media/Group 73 (1).png": "/medicbook/static/media/Group 73 (1).cfb8ee01.png",
@@ -46,7 +46,7 @@
   },
   "entrypoints": [
     "static/js/runtime~app.d7ba104d.js",
-    "static/js/2.7b0db37d.chunk.js",
-    "static/js/app.03191a6a.chunk.js"
+    "static/js/2.f467f37c.chunk.js",
+    "static/js/app.4636296b.chunk.js"
   ]
 }
