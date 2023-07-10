@@ -1,36 +1,59 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import {WebView, Dimensions, StyleSheet, View, Button, Text, Image, TouchableOpacity } from 'react-native';
 import facade from '../../mainClasses/DatabaseFacade'
 import BackButton from '../../../res/components/BackButton'
 import {useNavigate, useParams} from 'react-router-dom'
 
+import Lottie from 'react-lottie'
+import animationData from '../../../res/animations/newLoading.json'
 
 //import {Document, Page} from 'react-pdf';
 //import {WebView} from 'react-native-webview';
 
 
 
+
 export default function SingleMaterialScreen({navigation}){
+    const defaultLottieOptions = {
+        loop: true,
+        autoplay: true,
+        animationData: animationData,
+        delay: 1200,
+        rendererSettings: {
+        preserveAspectRatio: "xMidYMid slice"
+        }
+    };
     
+
+    const interactivity = {
+        mode: "scroll",
+        actions: [
+          {
+            visibility: [0.2, 0.45],
+            type: "seek",
+            frames: [0, 45],
+          },
+          {
+            visibility: [0.45, 1.0],
+            type: "loop",
+            frames: [45, 60],
+          },
+        ],
+    };
     const [pdfFile, setPdfFile] = useState(null)
+    const [pdfLoading, setPdfLoading] = useState(true)
     let {branch, section, topic} = useParams()
     const [url, setUrl] = useState(
         "https://storage.googleapis.com/tilquiz-90d16.appspot.com/" +  topic + "%2F" + navigation.state.params.pdfURL
     )
     
     let routerNavigate = useNavigate()
-    
-
-    //useEffect(() => {
-    //    setUrl(facade.getMaterialUrl(navigation.state.params.currentTopic, navigation.state.params.material.url))
-    //    console.log(url)
-    //}, [])
-
-    //url = "https://docs.google.com/viewer?url=" + url + "&embedded=true"
+    let lottieRef = useRef()
     
     useEffect(() => {
         setUrl("https://storage.googleapis.com/tilquiz-90d16.appspot.com/" +  topic + "%2F" + navigation.state.params.pdfURL)
-    })
+        setPdfLoading(true)
+    }, [])
 
     function setTitle(){
         console.log("setting title")
@@ -46,24 +69,32 @@ export default function SingleMaterialScreen({navigation}){
     }
 
     const windowHeight = Dimensions.get('window').height;
-    
+
+    function hideLoader(){
+        setPdfLoading(false)
+    }
+
     return(
         <View style={styles.container}>
-            {/*<Text style ={styles.defaultText}> Default Page</Text>
-                <WebView style={{width: '100%', height: '100%'}} source = {{uri = navigation.state.params}}/>
-            
-            <TouchableOpacity  style = {styles.item} onPress={setTitle}>{navigation.state.params.currentMaterial}</TouchableOpacity>
-            */}
-            <TouchableOpacity style={{alignText: 'center'}} onPress={()=>{goBack()}}> exit</TouchableOpacity>
+            <TouchableOpacity style={{alignText: 'center'}} onPress={()=>{goBack()}}></TouchableOpacity>
             <BackButton onPress={goBack} />
             {/*<iframe style={{width: '100%', height: "10%"}} src={url}/>*/}
+            <View style={styles.lottieContainer}>
+                {pdfLoading? <Lottie
+                                interactivity={interactivity}
+                                lottieRef={lottieRef}
+                                options={defaultLottieOptions}
+                                height={150}
+                                width={150}
+                        
+                            /> : null
+             } 
 
+            </View>
+            
             <iframe style={{width: '100%', height: "90%"}} src={"https://docs.google.com/viewer?url=" + 
-            url + 
-            "&embedded=true"}/>
-            
-            
-           
+                url + 
+                "&embedded=true"} onLoad={hideLoader} sandbox="allow-scripts allow-popups allow-same-origin" referrerPolicy="same-origin"/>
         </View>
     )   
 }
@@ -78,6 +109,13 @@ const styles = StyleSheet.create({
         fontSize: 50,
         color: "#fff"
 
+    },
+    lottieContainer: {
+        zIndex: 3, position: 'absolute',
+        width: 150,
+        height: 150,
+        right: 0, left: 0,
+        marginLeft: 'auto', marginRight: 'auto',
     },
     backButtonContainer:{
         width: '10%',

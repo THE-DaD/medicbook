@@ -3,6 +3,8 @@ import { requireNativeViewManager } from 'expo-modules-core';
 import { Dimensions } from 'react-native';
 import ScreenSize, {getCSS} from '../../src/mainClasses/ScreenSize'
 
+import medicbookSignImage from '../assets/LoadingScreen/Medicbook.png'
+
 
 
 
@@ -28,11 +30,11 @@ const TopBanner = (props) =>{
     }
         
     const element = (
-        <View style={[styles.banner]}>
+        <View style={[styles.banner, props.style]}>
             <View style={{width: '100%', height: '100%', overflow: 'hidden'}}>
                 <Image style={styles.rectengles} id="output" source={imgSrc} height={300}/>
                     {props.isSign? 
-                    <Image style={styles.medicbookSign} source={require('../assets/ChooseBranch/MedicBookSign.png')}/> :
+                    <Image style={styles.medicbookSign} source={medicbookSignImage}/> :
                     <View></View>
                 }
             </View>

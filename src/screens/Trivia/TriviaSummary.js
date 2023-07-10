@@ -134,10 +134,14 @@ export default function TriviaSummary({navigation}){
     }
 
     function navigateToRecap(index){
+        console.log(`Navigating With Params: \n index: ${index} totalNum: ${questions.length}`, questions[index])
         navigation.navigate("QuestionRecap", {
             question: questions[index], 
             index: index, 
-            totalQuestions: questions.length,})
+            totalQuestions: questions.length,
+            navigateNext: () => {navigateToRecap(index + 1)},
+            navigatePrevious: () => {navigateToRecap(index - 1)},
+        })
     
         console.log("Navigating to questionRecap", questions.length)
     }

@@ -8,6 +8,7 @@ import { Easing } from 'react-native-reanimated';
 import BackButton from '../../../res/components/BackButton';
 import WrongButtonFragment from '../../Fragments/WrongButtonFragment'
 import Question from '../../mainClasses/Question'
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 
 
@@ -24,12 +25,21 @@ function doNothing(){
 ]*/
 
 export default function QuestionScreen({navigation}){
-    let question = navigation.state.params.question
+    const [question, setQuestion] = useState(navigation.state.params.question)
     
+    let [totalQuestionNum, setTotalQuestionNum] = useState(navigation.state.params.totalQuestions)
+    let [currentQuestionNum, setCurrentQuestionNum] = useState(navigation.state.params.index + 1)
     function goBack(){
         //navigation.navigate("TriviaSummary")
         navigation.goBack() 
     }
+
+    useEffect(() => {
+        console.log("Using Effect")
+        setQuestion(navigation.state.params.question)
+        setTotalQuestionNum(navigation.state.params.totalQuestions)
+        setCurrentQuestionNum(navigation.state.params.index + 1)
+    }, [navigation.state.params])
     
     
     const transitionOpacity = useRef(
@@ -108,7 +118,7 @@ export default function QuestionScreen({navigation}){
 
 
     return(
-        <View style={styles.container}>
+        <View style={[styles.container]}>
             <Animated.View style={[styles.backgroundGrid, {opacity: state.opacityBG1, transform: [{translateX: backgroundOffset}]}]}>
                 <Image style={styles.fullSize} source={require('../../../res/assets/ Trivia/RecapBackground.png')}/>
             </Animated.View>
@@ -119,7 +129,7 @@ export default function QuestionScreen({navigation}){
             </Animated.View>*/}
             <BackButton onPress={goBack}/>
             <QuestionTitle text={questionText} 
-            currentQuestionNumber={navigation.state.params.index + 1} totalQuestionsNumber={navigation.state.params.totalQuestions}/>
+            currentQuestionNumber={currentQuestionNum} totalQuestionsNumber={totalQuestionNum}/>
             
             {answersText.map((item, index)=> {
                     console.log(item, question.correctAnswer, question.answered)
@@ -129,7 +139,10 @@ export default function QuestionScreen({navigation}){
                         wrongAnswer={!question.wasCorrect && index == question.answered}/>       
                     )
             })}
-            
+
+            {true? null: <><TouchableOpacity onPress={navigation.state.params.navigateNext} style={{position: 'absolute',  width: 100, height: 50, right: 0, zIndex: 10, backgroundColor: 'orange', textAlign: 'right'}}> {"->"} </TouchableOpacity>
+            <TouchableOpacity onPress={navigation.state.params.navigatePrevious} style={{position: 'absolute',  width: 100, height: 50, left: 0, zIndex: 10, backgroundColor: 'orange'}}> {"<-"} </TouchableOpacity>
+            </>}
             
             
             <link href="https://fonts.googleapis.com/css2?family=Alef&family=Heebo&family=Ms+Madi&family=Nabla&family=Noto+Sans+Buhid&family=Open+Sans&family=Oswald&display=swap" rel="stylesheet"/>

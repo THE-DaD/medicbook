@@ -6,10 +6,10 @@ const TopBanner = (props) =>{
     const element1 = (
 
         <View style={[styles.banner, {pointerEvents: 'none', position: 'absolute', bottom: 0}]}>
-            <View style={[styles.backgroundView, {height: '60%', zIndex: 10}]}> </View>
+            {/*<View style={[styles.backgroundView, {height: '60%', zIndex: 10}]}> </View>
             <View style={[styles.backgroundView, {height: '56%', zIndex: 9}]}> </View>
             <View style={[styles.backgroundView, {height: '52%', zIndex: 8}]}> </View>
-            <View style={[styles.backgroundView, {height: '48%', zIndex: 7}]}> </View>
+            <View style={[styles.backgroundView, {height: '48%', zIndex: 7}]}> </View>*/}
 
             <View style={{width: '100%', height: '100%', overflow: 'hidden', zIndex: 10}}>
                 <Image style={styles.rectengles} id="output" source={require('../assets/ChooseBranch/BottomBannerRectengles.png')}/>
@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
         height: '100%',
         resizeMode: "contain",
         transform: [{scale: 2}, {translateY: 100}],
-        filter: "hue-rotate(3deg)",
+        filter: "hue-rotate(0deg)",
         zIndex: 11,
         
         

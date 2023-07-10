@@ -31,7 +31,7 @@ class DatabaseFacade{
     this.database = getDatabase(this.app);
     this.dbRef = ref(getDatabase());
     this.storage = getStorage(this.app)
-    console.log("Material: ", new Material())
+
     
     //Loads the material from the data base, probably all of the materials. 
     //Should be changed to only the topic's material in the future
@@ -51,7 +51,6 @@ class DatabaseFacade{
   }
 
   readStructure(callbackMethod){
-      console.log("please loand")
     onValue(this.structurePointer, (snapshot) => {
       this.structureSnapShot = snapshot
       this.setMap(this.map, snapshot)
@@ -74,8 +73,6 @@ class DatabaseFacade{
     //To Do: Make so that the function asks for the specific material token.
     let firebaseStorageApi =  "https://storage.googleapis.com/tilquiz-90d16.appspot.com/" //"https://firebasestorage.googleapis.com/v0/b/tilquiz-90d16.appspot.com/o/"
     let url = firebaseStorageApi + topic + "%2F" + materialUrl
-    console.log("Topic: ", topic, "Material: ", materialUrl)
-    console.log("Url: ", url)
     return url
   }
 
@@ -101,12 +98,16 @@ class DatabaseFacade{
           //If we are looking at the "Name" Parameter we want to skip it
           if(_subject.key != "Name" && _subject.key != "Index"){
             let subject = MapObject.displayNameAndIndexInstance(_subject.key, _subject.child("Name").val(), _subject.child("Index").val())
+            let hueRotation = _subject.child('HueRotation').val()
+            let color =  _subject.child('Color').val()
+            if(hueRotation && color)
+              subject.setHueRotationandColor(hueRotation, color)
             branch.addChild(subject)
             _subject.forEach(function(_topic){
               //We are in the topics layer
 
               //Ignoring the "Name" Paramater that we already used
-              if(_topic.key != "Name" && _topic.key != "Index"){
+              if(_topic.key != "Name" && _topic.key != "Index" && _topic.key != "HueRotation" && _topic.key != "Color"){
                 let topic;
                 if(_topic.child("Index").val() != null){
                   topic = MapObject.displayNameAndIndexInstance(_topic.key, _topic.child("Name").val(), _topic.child("Index").val())
@@ -138,35 +139,32 @@ class DatabaseFacade{
     let startCountRef = ref(this.database, 'TriviaQuestions/')
     onValue(startCountRef, (snapshot) => {
       let array = [];
-      console.log("SnapShot", snapshot.val())
       this.questionsPointer = snapshot.child("TriviaQuestions")
       this.questionsSnapShot = snapshot
       
     });
   }
-  isQuestionsInTopic(stateParams){
-    if(this.getTopicQuestions(stateParams.topicChosen).length > 0)
+  isQuestionsInTopic(topic){
+    if(this.getTopicQuestions(topic).length > 0)
       return true
     return false
   }
 
   getTopicQuestions(topic){
-    console.log(topic, "Questions Getting", this.questionsSnapShot)
+    
     let questions = []
     this.questionsSnapShot.forEach(function(_question){
-        
         if(_question.child("topic").val().toLowerCase().startsWith(topic.toLowerCase())){
           questions.push(new Question(_question.child("question").val(), _question.child("correctAnswer").val(), _question.child("answers").val()))
-        }
-        
+        } 
     })
+    
     return questions
   }
 
   setMapRecorsivly(mapObject, snapShot){
 
     if(!snapShot.hasChildren()){
-      console.log("has no children")
       return
     }
     //Map Subject Set Up

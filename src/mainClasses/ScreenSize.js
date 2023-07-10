@@ -44,5 +44,13 @@ export function getCSS(){
     return currentScreenSize
 }
 
+export function ScreenWidth(){
+  return useWindowDimensions().width
+}
+
+export function ScreenHeight(){
+  return useWindowDimensions().height
+}
+
 
 

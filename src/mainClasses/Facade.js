@@ -1,12 +1,9 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getDatabase, ref, set, onValue} from "firebase/database";
-import storage from "@react-native-firebase/storage"
-
-
 import MapObject from "./MapObject";
 import Question from "./Question"
-import { Array } from "core-js";
+
 // Initialize Firebase
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -27,7 +24,6 @@ const firebaseConfig = {
 class Facade{
   constructor() {
     //Starting the facade by connecting the server or whatever the getDataBase() function does
-    console.log("change already") 
     this.app = initializeApp(firebaseConfig);
     this.database = getDatabase(this.app);
     
@@ -45,7 +41,6 @@ class Facade{
 
     this.questionsPointer = ref(this.database, 'TriviaQuestions')
     this.questionsSnapShot = null
-    //console.log(storage())
   }
 
   readStructure(callbackMethod){
@@ -59,13 +54,11 @@ class Facade{
   readQuestions(){
     onValue(this.questionsPointer, (snapshot) => {
       this.questionsSnapShot = snapshot
-      console.log("Read questions")
       this.getTopicQuestions("anamnesis")
     })
   }
 
   getTopicQuestions(topic){
-    console.log("Questions Getting", this.questionsSnapShot)
     let questions = []
     this.questionsSnapShot.forEach(function(_question){
         
@@ -133,7 +126,6 @@ class Facade{
       }
 
     })
-    console.log(this.map)
 
     this.map.sortByIndex()    
   }
@@ -141,7 +133,6 @@ class Facade{
   setMapRecorsivly(mapObject, snapShot){
 
     if(!snapShot.hasChildren()){
-      console.log("has no children")
       return
     }
     //Map Subject Set Up
@@ -149,17 +140,14 @@ class Facade{
       //We are in the Branches layer.
       //Ignoring the "Name" parameter
       if(_child.key != "Name" && _child.key != "Index"){
-        console.log(_child)
         //Creating A node for the map that holds the VariableName and the display name
         let branch = MapObject.displayNameAndIndexInstance(_child.key, _child.child("Name").val(), _child.child("Index").val())
-        console.log("branch: ", branch)
         mapObject.addChild(branch)
         setMapRecorsivly(branch, _child)
         /// branch = MapObject.displayNameInstance(*Branch Name*, *Branch displayName*)
         //baseFunctionMapPointer.addChild(branch)
       }
     })
-    console.log(this.map)
   }
 
 

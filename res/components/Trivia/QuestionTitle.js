@@ -57,8 +57,8 @@ const styles = StyleSheet.create({
         alignSelf: "center",
         flexDirection: "column",
         
-        width: 80 * WU,
-        height: 150,
+        width: 300,
+        height: 200,
 
         minWidth: 150,
         flwxWrap: "wrap",

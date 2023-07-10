@@ -40,13 +40,13 @@ export default function VideoScreen({navigation}){
     let [videos, setVideos] = useState(videoIds);
     let [videoNames, setVideoNames] = useState(thumbnails);
 
-
+ 
 
 
     return(
-        <View style={styles.container}>
+        <View style={{width:'100%', height: '100%'}}>
             <BackButton onPress={() => {routerNavigate("/" + branch + "/" + section + "/" + topic), {replace: true}}}/>
-            {videos.length == 0? <Text style={styles.noVideos}>אין סרטונים בנושא זה</Text> :
+            {videos.length == 0? <Text style={[styles.noVideos, {paddingTop: 170, marginRight: 60}]}>אין סרטונים בנושא זה</Text> :
                 <FlatList style={styles.videoList} data={videos}
                     numColumns={2}
                     renderItem = {({item, index}) => <VideoThumbnail key={index} text={videoNames[index]} VideoId={item} onPress={()=>handlePress(index)}/>}>
@@ -59,16 +59,16 @@ export default function VideoScreen({navigation}){
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: "#fff",
         flex: 1,
         flexDirection: 'row',
         textAlign: "center",
-        justifyContent: 'center',
+        
         flexWrap: 'wrap',
-        alignItems: 'flex-start', // if you want to fill rows left to right
-        backgroundColor: '#fcfcfc',
+         // if you want to fill rows left to right
         paddingTop: 40,
-        alignItems: 'center',
+        
+        
+        zIndex: 15,
     },
     noVideos:{
         fontSize: 50,
@@ -77,7 +77,11 @@ const styles = StyleSheet.create({
         fontFamily: "OpenSansHebrew-Bold",
     },
     videoList:{
-        zindex: 10,
-        
+        paddingTop:  170,
+        height: '100%',
+        width: '80%',
+        position: 'relative',
+        transform: [{translateX: 30}],
+        marginRight: 60,
     }
 });

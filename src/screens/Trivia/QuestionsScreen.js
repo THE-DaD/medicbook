@@ -9,6 +9,7 @@ import BackButton from '../../../res/components/BackButton';
 import WrongButtonFragment from '../../Fragments/WrongButtonFragment'
 import Question from '../../mainClasses/Question'
 import facade from '../../mainClasses/DatabaseFacade'
+import {useNavigate, useParams} from 'react-router-dom'
 
 
 
@@ -19,11 +20,14 @@ function doNothing(){
 export default function QuestionScreen({navigation}){
     
     const [questions, setQuestions] = useState(facade.getTopicQuestions(navigation.state.params.topicChosen))
+    const routerNavigate = useNavigate()
+    let {branch, section, topic} = useParams()
     
 
     function goBack(){
         //navigation.navigate("TriviaSummary")
-        navigation.goBack()
+        //navigation.goBack()
+        routerNavigate("/" + branch + "/" + section + "/" + topic, {replace: true})
         //navigation.navigate("TriviaSummary", {questions: questions});
     }
     

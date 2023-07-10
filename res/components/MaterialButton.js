@@ -9,7 +9,7 @@ const MaterialButton = (props) => {
     console.log(props.width)
     return (
     <TouchableOpacity onPress={props.onPress} style={[styles.item, {width: props.width}]}>
-            <Image style = {[styles.Image]} source={require('../assets/glassMenu/materialCrazyButton.png')}/>
+            <Image style = {[styles.Image]} source={require('../assets/glassMenu/MaterialButtonEdipos.png')}/>
             <Text style={styles.itemText}>{formatString(props.text)}</Text>
     </TouchableOpacity>
   )
@@ -33,7 +33,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     marginBottom: 10,
     textAlign: "right",
-    right: "-5%",
     
   },
   
@@ -43,9 +42,10 @@ const styles = StyleSheet.create({
     color: '#0C4F44',
     opacity: 1,
     right: 40,
+    marginRight: 70,
     fontSize: global.preferedFontItemSize * 0.5,
     fontWeight: 'bold',
-    fontFamily: 'Heebo'
+    fontFamily: 'Heebo',
   },
 
   Image: {

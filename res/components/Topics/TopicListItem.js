@@ -16,6 +16,10 @@ export default function TopicListItem(props) {
         fontSize = 16
       }
     }
+    let link =  null
+    if(props.link){
+      link = props.link
+    }
 
     let currentScreenSize = getCSS()
     let buttonWidth = 200
@@ -45,8 +49,8 @@ export default function TopicListItem(props) {
           display: 'flex',
           alignItems: 'center',
           boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.1)',
-          borderTopLeftRadius: 35,
-          borderBottomLeftRadius: 35,
+          borderTopLeftRadius: 50,
+          borderBottomLeftRadius: 50,
           marginRight: '0', // cancelled margin
           marginTop: '10px',
           marginBottom: '10px',
@@ -72,7 +76,7 @@ export default function TopicListItem(props) {
             marginLeft: '5px' // increased margin
           }}
         />
-        <Text style={{pointerEvents: "none", fontFamily: 'Heebo', textAlign: 'right', fontSize: fontSize, marginRight: 20, marginLeft:'auto', marginRight: 20}}>{item}</Text>
+        <Text style={{pointerEvents: "none", lineHeight: "80%",fontFamily: 'Heebo', textAlign: 'right', fontSize: fontSize, marginRight: 20, marginLeft:'auto', marginRight: 20}}>{item}</Text>
       </TouchableOpacity>
     );
   

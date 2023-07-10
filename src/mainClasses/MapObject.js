@@ -5,6 +5,8 @@ class MapObject{
         this.children = []
         this.index = 100
         this.parent = null
+        this.color =  "#F17581"
+        this.hueRotation = 50
     }
 
     static displayNameInstance(name, displayName){
@@ -24,6 +26,13 @@ class MapObject{
     setDisplayName(displayName){
         this.displayName = displayName
 
+    }
+
+
+    setHueRotationandColor(hueRotation, color){
+        console.log("HeuRotation: ", hueRotation, "Color: ", color)
+        this.hueRotation = hueRotation
+        this.color = color
     }
 
     addChild(mapObjectChild){
