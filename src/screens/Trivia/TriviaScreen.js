@@ -12,32 +12,7 @@ import {useNavigate, useParams} from 'react-router-dom'
 
 
 
-const styles = StyleSheet.create({
-    container: {
-        justifyContent: 'center',
-        flex: 1,
-        backgroundColor: "rgba(220,220,220, 0.5)",
-        marginRight: 60,
-    },
-    backgroundGrid: {
-        width: '100%', height:'100%', position: 'absolute', zIndex: -1,
-    },
-    fullSize: {
-        width: '100%',
-        height: '100%',
-    },
-    questionNumberText: {
-        fontSize: 40,
-        color: "#000",
-        alignSelf: "center",
-    },
-    defaultText: {
-        fontSize: 25,
-        color: "#000",
-        alignSelf: "center",
 
-    },
-});
 
 export default function HooksPreperation(){
     let {branch, section, topic} = useParams()
@@ -53,45 +28,44 @@ class TriviaScreen extends React.Component{
     constructor(props){
         super(props)
         this.state={
-            isQuestionsInTopic: facade.isQuestionsInTopic(props.path.topic),
-             popUpVisible: false,
-             noQuestionsPopupVisible: false,
-             popUpText: "",
-             popUpTextIndex : 0,
+            isQuestionsInTopic: facade.isQuestionsInTopic(props.path.topic), //Bool : presenting if there are questions in topic
+             popUpVisible: false, //Bool : Responsible for showing and hidding the WrongButtonText
+             noQuestionsPopupVisible: false, //Bool : Responsible for showing and hidding the NoQuestions in topic PopUp
+             popUpText: "", //String: The WrongButtonText Shown to the user
+             popUpTextIndex : 0, //Int: The list index of the popupText for the WrongButtonText
 
         }
-        console.log( "Finished the initialization of the states")
         this.routerNavigate = props.routerNavigate
-        
 
         //assigning the location to the location paramaters
         this.branch = props.path.branch
         this.section = props.path.section
         this.topic = props.path.topic
 
+        //Binding the "this" proprity to this, in all of the below functions
         this.wrongButtonPress = this.wrongButtonPress.bind(this)
         this.moveForward = this.moveForward.bind(this)
         this.goBack = this.goBack.bind(this)
-        console.log( "Finished the initialization of the Vars")
     }
 
     wrongButtonPress(){
+        //List of all Possible Error Texts
         let possibleTexts = ["אמרנו לא פה", "באמת לא פה", "שום דבר לא ישתנה"]
-        console.log("This State is: ", this.state)
+
+        //Showing the correct Text
         this.setState({
             popUpVisible: true,
             popUpTextIndex: this.state.popUpTextIndex + 1,
             popUpText : possibleTexts[this.state.popUpTextIndex  % possibleTexts.length]})
-        
     }
 
     goBack(){
+        //Return To Topic
         this.routerNavigate("/" + branch + "/" + section + "/" + topic, {replace: true})
     }
 
     moveForward(){
-        
-        console.log("Is questions in topic", this.state.isQuestionsInTopic)
+        //Navigating the router to the TriviaScreen or Presenting an error message
         if(this.state.isQuestionsInTopic){
             this.routerNavigate("./action?trivia=true")
         }
@@ -99,37 +73,55 @@ class TriviaScreen extends React.Component{
             this.setState({noQuestionsPopupVisible: true})
         }
     }
+    
 
     render(){
-    return(
-        <View style={styles.container}>
-            <BackButton onPress={this.goBack}/>
-            <QuestionTitle question={"שאלה 1:"} text={"על מה צריך ללחוץ כדי להתחיל?"}/>
-            <TriviaAnswer text={"על זה"} onPress={this.moveForward}/>
-            <TriviaAnswer text={"על זה לא"} onPress={this.wrongButtonPress}/>
-            <TriviaAnswer text={"על זה בטוח לא"} onPress={this.wrongButtonPress}/>
-            {/* Pop Up */}
-            <View style={{width: '100%', height: 250, position: 'absolute', top: 100}}>
-                {this.state.popUpVisible? <WrongButtonFragment style={{backgroundColor: 'white'}} text={this.state.popUpText} closeSelf={()=>{
-                    this.setState({popUpVisible : false})
-                }} visible={false}/>:
-                    <View/>
-                }
+        return(
+            <View style={styles.container}>
+                <BackButton onPress={this.goBack}/>
+                <QuestionTitle question={"שאלה 1:"} text={"על מה צריך ללחוץ כדי להתחיל?"}/>
+                
+                <TriviaAnswer text={"על זה"} onPress={this.moveForward}/>
+                <TriviaAnswer text={"על זה לא"} onPress={this.wrongButtonPress}/>
+                <TriviaAnswer text={"על זה בטוח לא"} onPress={this.wrongButtonPress}/>
+                {/* Pop Ups */}
+                    {/* WrongButton PopUp */}
+                    <View style={styles.WrongButtonPopUp}>
+                        {this.state.popUpVisible? 
+                        <WrongButtonFragment style={{backgroundColor: 'white'}} 
+                            text={this.state.popUpText} 
+                            closeSelf={()=>{this.setState({popUpVisible : false})
+                            }} visible={false}/>
+                                :
+                            <View/>
+                    }
 
-                {this.state.noQuestionsPopupVisible? <WrongButtonFragment text={"אין שאלות בנושא זה עדיין"} closeSelf={()=>{
-                    this.setState({noQuestionsPopupVisible: false})}} visible={false}/>:
-                    <View/>
-                }   
-            </View>
-            
-            
-            
+                    {/*NoQuestions in Topic PopUp */}
+                    {this.state.noQuestionsPopupVisible? 
+                    <WrongButtonFragment text={"אין שאלות בנושא זה עדיין"} 
+                        closeSelf={()=>{this.setState({noQuestionsPopupVisible: false})}} visible={false}/>
+                            :
+                        <View/>
+                    }   
+                </View>
             
             <link href="https://fonts.googleapis.com/css2?family=Alef&family=Heebo&family=Ms+Madi&family=Nabla&family=Noto+Sans+Buhid&family=Open+Sans&family=Oswald&display=swap" rel="stylesheet"/>
         </View>
         )
     }   
-
-    
-
 }
+
+const styles = StyleSheet.create({
+    container: {
+        justifyContent: 'center',
+        flex: 1,
+        backgroundColor: "rgba(220,220,220, 0.5)",
+        marginRight: 60,
+    },
+    WrongButtonPopUp:{
+        width: '100%', 
+        height: 250, 
+        position: 'absolute', 
+        top: 100},
+
+});

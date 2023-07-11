@@ -11,59 +11,9 @@ import Question from '../../mainClasses/Question'
 import facade from '../../mainClasses/DatabaseFacade'
 import {useNavigate, useParams} from 'react-router-dom'
 
+import BackgroundImage from '../../../res/assets/ Trivia/abstract1.jpeg'
 
-
-function doNothing(){
-    console.log("doing Nothing")
-}
-
-export default function QuestionScreen({navigation}){
-    
-    const [questions, setQuestions] = useState(facade.getTopicQuestions(navigation.state.params.topicChosen))
-    const routerNavigate = useNavigate()
-    let {branch, section, topic} = useParams()
-    
-
-    function goBack(){
-        //navigation.navigate("TriviaSummary")
-        //navigation.goBack()
-        routerNavigate("/" + branch + "/" + section + "/" + topic, {replace: true})
-        //navigation.navigate("TriviaSummary", {questions: questions});
-    }
-    
-    function chooseAnswer(answerNum){
-       if(questionNumber + 1  < questions.length){
-            questions[questionNumber].answer(answerNum)
-            setQuestionText(questions[questionNumber + 1].question)
-            setAnswersText(questions[questionNumber + 1].allAnswers)
-            setQuestionNumber(questionNumber + 1)
-       }
-       else{
-            questions[questionNumber].answer(answerNum)
-            navigation.navigate("TriviaSummary", {questions: questions});
-       }
-       
-    }
-    
-    const transitionOpacity = useRef(
-        new Animated.Value(1)
-    ).current;
-    const backgroundOffset = useRef(new Animated.Value(0)).current
-
-    // First set up animation 
-    
-
-    // Next, interpolate beginning and end values (in this case 0 and 1)
-    
-    
-    const [popUpVisible, setPopUpVisible] = useState(false)
-    const [popUpText, setPopUpText] = useState('')
-    const [popUpTextIndex, setPopUpTextIndex] = useState(0)
-
-    const [answersText, setAnswersText] = useState(questions[0].allAnswers)
-    const [questionNumber, setQuestionNumber] = useState(0);
-    const [questionText, setQuestionText] = useState(questions[0].question)
-
+function BackgroundAnimatedComp(){
     const state = {
         opacityBG1 : new Animated.Value(1),
         opacityBG2 : new Animated.Value(0),
@@ -71,8 +21,12 @@ export default function QuestionScreen({navigation}){
         opacityBG4 : new Animated.Value(0),
         opacityBG5 : new Animated.Value(0),
     }
+    const backgroundOffset = useRef(new Animated.Value(0)).current
+
     function startAnimation(){
-        
+        /*
+            Does: Creates a animationm loops that loops through the opacity of all the images, and starts it.
+        */
         Animated.loop(
             Animated.sequence([
                 Animated.timing(
@@ -284,32 +238,70 @@ export default function QuestionScreen({navigation}){
         ).start()
     }
     startAnimation()
+    return(<View style={styles.backgroundAnimatedComp}>
+        <Animated.View style={[styles.backgroundGrid, {opacity: state.opacityBG1, transform: [{translateX: backgroundOffset}]}]}>
+            <Image style={styles.fullSize} source={BackgroundImage}/>
+        </Animated.View>
+        <Animated.View style={[styles.backgroundGrid, {opacity: state.opacityBG2, transform: [{translateX: backgroundOffset}]}]}>
+            <Image style={styles.fullSize} source={BackgroundImage}/>
+        </Animated.View>
+        <Animated.View style={[styles.backgroundGrid, {opacity: state.opacityBG3, transform: [{translateX: backgroundOffset}]}]}>
+            <Image style={styles.fullSize} source={BackgroundImage}/>   
+        </Animated.View>
+        <Animated.View style={[styles.backgroundGrid, {opacity: state.opacityBG4, transform: [{translateX: backgroundOffset}]}]}>
+            <Image style={styles.fullSize} source={BackgroundImage}/>
+        </Animated.View>
+        <Animated.View style={[styles.backgroundGrid, {opacity: state.opacityBG5, transform: [{translateX: backgroundOffset}]}]}>
+            <Image style={styles.fullSize} source={BackgroundImage}/>
+        </Animated.View>
+    </View>
+    )
+}
+
+export default function QuestionScreen({navigation}){
+    //Standard SetUp
+    const routerNavigate = useNavigate()
+    let   {branch, section, topic} = useParams()
+    const [questions, setQuestions] = useState(facade.getTopicQuestions(topic))
+
+    useEffect(() => {
+        //Loading New Topic Effect
+        setQuestions(facade.getTopicQuestions(navigation.state.params.topicChosen))
+
+    }, [topic])
+
+
+    function goBack(){
+        //return to topic
+        routerNavigate("/" + branch + "/" + section + "/" + topic, {replace: true})
+    }
+
+    function chooseAnswer(answerNum){
+        /*
+            Gets: Int: answerNum (0 - 3) => The index of the button that was clicked by the user
+            Does:   Changes the Question Object to be answered with the corresponding answer. 
+                    In Case of last question navigate to the next screen.
+        */
+       if(questionNumber + 1  < questions.length){
+            questions[questionNumber].answer(answerNum)
+            setQuestionText(questions[questionNumber + 1].question)
+            setAnswersText(questions[questionNumber + 1].allAnswers)
+            setQuestionNumber(questionNumber + 1)
+       }
+       else{
+            questions[questionNumber].answer(answerNum)
+            navigation.navigate("TriviaSummary", {questions: questions});
+       }
+    }
+    
+    const [answersText, setAnswersText] = useState(questions[0].allAnswers)
+    const [questionNumber, setQuestionNumber] = useState(0);
+    const [questionText, setQuestionText] = useState(questions[0].question)
 
 
     return(
         <View style={styles.container}>
-            <Animated.View style={[styles.backgroundGrid, {opacity: state.opacityBG1, transform: [{translateX: backgroundOffset}]}]}>
-                <Image style={styles.fullSize} source={require('../../../res/assets/ Trivia/Group 58 (1).png')}/>
-            </Animated.View>
-            <Animated.View style={[styles.backgroundGrid, {opacity: state.opacityBG2, transform: [{translateX: backgroundOffset}]}]}>
-                <Image style={styles.fullSize} source={require('../../../res/assets/ Trivia/background2.png')}/>
-            </Animated.View>
-            <Animated.View style={[styles.backgroundGrid, {opacity: state.opacityBG3, transform: [{translateX: backgroundOffset}]}]}>
-                <Image style={styles.fullSize} source={require('../../../res/assets/ Trivia/background3.png')}/>
-            </Animated.View>
-            <Animated.View style={[styles.backgroundGrid, {opacity: state.opacityBG4, transform: [{translateX: backgroundOffset}]}]}>
-                <Image style={styles.fullSize} source={require('../../../res/assets/ Trivia/background4.png')}/>
-            </Animated.View>
-            <Animated.View style={[styles.backgroundGrid, {opacity: state.opacityBG5, transform: [{translateX: backgroundOffset}]}]}>
-                <Image style={styles.fullSize} source={require('../../../res/assets/ Trivia/background5.png')}/>
-            </Animated.View>
-
-
-
-
-            {/*<Animated.View style={[styles.backgroundGrid, {right: "101%",opacity: transitionOpacity, transform: [{translateX: backgroundOffset}]}]}>
-                <Image style={styles.fullSize} source={require('../../../res/assets/ Trivia/Group 58 (1).png')}/>
-            </Animated.View>*/}
+            <BackgroundAnimatedComp />
             <BackButton onPress={goBack}/>
             <QuestionTitle text={questionText} 
             currentQuestionNumber={questionNumber + 1} totalQuestionsNumber={questions.length}/>
@@ -319,20 +311,9 @@ export default function QuestionScreen({navigation}){
                     <TriviaAnswer text={item} onPress={()=>{chooseAnswer(index)}} key={index}/>       
                 )
             })}
-
-
-            {/* Pop Up */}
-            {popUpVisible? <WrongButtonFragment text={popUpText} closeSelf={()=>{setPopUpVisible(false)}} visible={false}/>:
-                <View/>
-            }
-            
-            
-            
-            <link href="https://fonts.googleapis.com/css2?family=Alef&family=Heebo&family=Ms+Madi&family=Nabla&family=Noto+Sans+Buhid&family=Open+Sans&family=Oswald&display=swap" rel="stylesheet"/>
         </View>
     )   
 }
-
 
 
 const styles = StyleSheet.create({
@@ -340,6 +321,12 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         flex: 1,
         backgroundColor: "#fff"
+    },
+    backgroundAnimatedComp: {
+        width: '100%',
+        height: '100%',
+        position:'absolute',
+        right: 0, top: 0,
     },
     backgroundGrid: {
         width: '100%', height:'100%', position: 'absolute', zIndex: -1,

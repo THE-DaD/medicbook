@@ -10,8 +10,6 @@ import {Material, MaterialType} from "../mainClasses/Material"
 // Initialize Firebase
 
 // TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
 // Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyAmvPCAFYgzrQ2UkQaf1gSwSEPzjuVgw4g",
@@ -169,8 +167,6 @@ class DatabaseFacade{
     }
     //Map Subject Set Up
     snapShot.forEach(function(_child){
-      //We are in the Branches layer.
-      //Ignoring the "Name" parameter
       if(_child.key != "Name" && _child.key != "Index"){
         //Creating A node for the map that holds the VariableName and the display name
         let branch = MapObject.displayNameAndIndexInstance(_child.key, _child.child("Name").val(), _child.child("Index").val())

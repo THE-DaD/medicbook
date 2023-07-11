@@ -3,26 +3,12 @@ import {global} from '../../global/Style'
 import {Animated, ScrollView, Image, StyleSheet, View, Button, Text } from 'react-native';
 import TriviaAnswer from '../../../res/components/Trivia/TriviaAnswer'
 import QuestionTitle from '../../../res/components/Trivia/QuestionTitle'
-import { back } from 'react-native/Libraries/Animated/Easing';
+
 import { Easing } from 'react-native-reanimated';
 import BackButton from '../../../res/components/BackButton';
-import WrongButtonFragment from '../../Fragments/WrongButtonFragment'
-import Question from '../../mainClasses/Question'
+
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
-
-
-
-function doNothing(){
-    console.log("doing Nothing")
-}
-/*[
-    new Question("שאלה 1", 0, ["1", "2", "3", "4", "5"]), new Question("שאלה 2", 0, ["1", "2", "3", "4", "5"]),
-    new Question("שאלה 3", 0, ["1", "2", "3", "4", "5"]), new Question("שאלה4", 0, ["1", "2", "3", "4", "5"]),
-    new Question("שאלה 5", 0, ["1", "2", "3", "4", "5"]), new Question("שאלה 6", 0, ["1", "2", "3", "4", "5"]),
-    new Question("שאלה 7", 0, ["1", "2", "3", "4", "5"]), new Question("שאלה 8", 0, ["1", "2", "3", "4", "5"]),
-    new Question("שאלה 9", 0, ["1", "2", "3", "4", "5"]), new Question("שאלה 10", 0, ["1", "2", "3", "4", "5"]),
-]*/
 
 export default function QuestionScreen({navigation}){
     const [question, setQuestion] = useState(navigation.state.params.question)

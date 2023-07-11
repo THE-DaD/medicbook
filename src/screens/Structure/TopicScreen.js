@@ -110,14 +110,14 @@ export default function TopicScreen({navigation}){
     const calculatedStyles = function(){ 
         return {
             topicsList : {
-            zIndex: 8,
-             width: '100%',
-              height: 300,
-               alignSelf: 'center',
-               paddingTop: 100,
+                zIndex: 8,
+                width: '100%',
+                height: 300,
+                alignSelf: 'center',
+                paddingTop: 100,
                 paddingBottom: 60,
-                 marginTop: Math.min(0, -160)}
-        }
+                marginTop: Math.min(0, -160)}
+            }
         
     }
 

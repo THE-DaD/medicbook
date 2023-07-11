@@ -12,7 +12,7 @@ import PresentationsScreen from '../screens/PresentationsScreen';
 import TriviaScreen from '../screens/Trivia/TriviaScreen';
 import SingleMaterialScreen from '../screens/Pdfs/SingleMaterialScreen';
 import PreEnteryLoadingScreen from '../screens/LoadingScreens/PreEnteryLoadingScreen';
-import YoutubePlayerScreen from '../screens/Videos/YoutebePlayerScreen';
+/* import YoutubePlayerScreen from '../screens/Videos/YoutebePlayerScreen'; */
 
 import AddMaterialScreen from '../screens/Upload/AddMaterialScreen'
 import QuestionsScreen from '../screens/Trivia/QuestionsScreen'
