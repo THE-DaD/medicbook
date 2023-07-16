@@ -1,21 +1,28 @@
-FROM node:14-alpine AS development
+# pull base image
+FROM node:18.0.0-buster-slim
 
-# Add a work directory
-WORKDIR /app
+RUN npm i --unsafe-perm --allow-root -g npm@latest expo-cli@latest
 
-# Cache and Install dependencies
+# install dependencies first, in a different location for easier app bind mounting for local development
+# due to default /opt permissions we have to create the dir with root and change perms
+RUN mkdir /opt/react_native_app
+WORKDIR /opt/react_native_app
+ENV PATH /opt/react_native_app/.bin:$PATH
 COPY package.json .
+COPY package-lock.json .
 COPY yarn.lock .
+#COPY ./package-lock.json ./package-lock.json ./
+#COPY ./yarn.lock ./
+RUN npm install --force
 
-# Copy app files
-COPY . .
+# copy in our source code last, as it changes the most
+WORKDIR /opt/react_native_app/app
+# for development, we bind mount volumes; comment out for production
 
-RUN yarn install
+# default to port 19006 for node, and 19001 and 19002 (tests) for debug
+ARG PORT=19006
+ENV PORT $PORT
+EXPOSE $PORT
 
-
-
-# Expose port
-EXPOSE 3000
-
-# Start the app
-CMD [ "yarn", "start" ]
+ENTRYPOINT ["npm", "run"]
+CMD ["web"]
