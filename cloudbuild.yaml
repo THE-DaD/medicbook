@@ -15,7 +15,7 @@ steps:
     - '--image'
     - 'europe-west3-docker.pkg.dev/$PROJECT_ID/medicbook-dev-repo/medicbook-dev:$COMMIT_SHA'
     - '--region'
-    - 'eu-west3'
+    - 'europe-west3'
     - '--allow-unauthenticated'
     - '--platform'
     - 'managed'
