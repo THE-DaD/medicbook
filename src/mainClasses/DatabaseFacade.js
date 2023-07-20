@@ -6,7 +6,8 @@ import storage, {ref as storageRef, getStorage, getDownloadURL } from "firebase/
 import MapObject from "./MapObject";
 import { Array } from "core-js";
 import Question from "../mainClasses/Question"
-import {Material, MaterialType} from "../mainClasses/Material"
+import {Material, MaterialType} from "./Material"
+import {Video}  from "./Video"
 // Initialize Firebase
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -219,8 +220,23 @@ class DatabaseFacade{
       })
       this.videos = array
       this.videosSnapShot = snapshot
+      console.log(this.videosSnapShot.val())
       callbackMethod()
     });
+  }
+
+  getTopicsVideos(topic){
+    console.log("Searching for videos in topic: ", topic)
+    let topicsVideoList = []
+    if(topic && this.videosSnapShot.child(topic) != null){
+      console.log("There are Videos in this Topic", topic)
+      this.videosSnapShot.child(topic).forEach(function(_video){
+        console.log(_video.child("url/").val(), _video.child("Name/").val())
+        topicsVideoList.push( new Video( _video.child("url/").val(), _video.child("Name/").val() ) )
+      })
+    }
+    return topicsVideoList
+     
 
   }
 

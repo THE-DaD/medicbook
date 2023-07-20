@@ -1,15 +1,15 @@
 import React, {document, WebView, useRef, useEffect, useState} from 'react';
 import { Animated, Dimensions, FlatList, Text, StyleSheet, View, TouchableOpacity, Image,  BackHandler } from 'react-native';
-/* import map from '../../global/map'  */
-import TopBanner from '../../../res/components/TopBanner'
-import BottomBanner from '../../../res/components/BottomBanner'
-import MapObjectView from '../../../res/components/MapObjectView'
-/* import GlassMenu from '../../../res/components/GlassMenu' */
+
+import TopBanner from  '../../components/Structure/TopBanner'
+import BottomBanner from '../../components/Structure/BottomBanner'
+import MapObjectView from '../../components/Structure/MapObjectView'
+
 import {Spotify} from 'react-spotify-embed'
 import {ScreenHeight} from '../../mainClasses/ScreenSize'
 import {useNavigate, useLocation, useParams} from 'react-router-dom'
 import facade from '../../mainClasses/DatabaseFacade'
-import BackButton from '../../../res/components/BackButton'
+import BackButton from '../../components/BackButton'
 import routerHistory, {NavigationOption} from '../../mainClasses/routerHistory'
 
 let pagePointer = null

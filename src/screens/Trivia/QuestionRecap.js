@@ -1,11 +1,11 @@
 import React, { useRef, useEffect, useState} from 'react';
 import {global} from '../../global/Style'
 import {Animated, ScrollView, Image, StyleSheet, View, Button, Text } from 'react-native';
-import TriviaAnswer from '../../../res/components/Trivia/TriviaAnswer'
-import QuestionTitle from '../../../res/components/Trivia/QuestionTitle'
+import TriviaAnswer from '../../components/Trivia/TriviaAnswer'
+import QuestionTitle from '../../components/Trivia/QuestionTitle'
 
 import { Easing } from 'react-native-reanimated';
-import BackButton from '../../../res/components/BackButton';
+import BackButton from '../../components/BackButton';
 
 import { TouchableOpacity } from 'react-native-gesture-handler';
 

@@ -8,16 +8,15 @@ import {View} from 'react-native'
 //Screens
 import BranchScreen from '../screens/Structure/BranchScreen';
 
-import DefaultScreen from '../screens/DefaultScreen';
+
 /* import MaterialsScreen from '../screens/Pdfs/MaterialsScreen'; */
-import VideosScreen from '../screens/Videos/VideosScreen';
-import PresentationsScreen from '../screens/PresentationsScreen';
-import TriviaScreen from '../screens/Trivia/TriviaScreen';
+import VideosFragment from '../Fragments/VideosFragment';
+
+import TriviaScreen from '../Fragments/TriviaFragment';
 import SingleMaterialScreen from '../screens/Pdfs/SingleMaterialScreen';
 import PreEnteryLoadingScreen from '../screens/LoadingScreens/PreEnteryLoadingScreen';
 /* import YoutubePlayerScreen from '../screens/Videos/YoutebePlayerScreen'; */
 
-import AddMaterialScreen from '../screens/Upload/AddMaterialScreen'
 import QuestionsScreen from '../screens/Trivia/QuestionsScreen'
 import TriviaSummary from '../screens/Trivia/TriviaSummary'
 import QuestionRecap from '../screens/Trivia/QuestionRecap'
@@ -39,9 +38,6 @@ let screens = {
         navigationOptions: {
             headerShown: false,
         }
-    },
-    DefaultScreen: {
-        screen: DefaultScreen
     },
     TopicScreen: {
         screen: TopicScreen,
@@ -77,11 +73,6 @@ let screens = {
     },
     
     
-    
-    AddMaterialScreen:{
-        screen: AddMaterialScreen
-    },
-    
     SingleMaterialScreen:{
         screen: SingleMaterialScreen,
         navigationOptions: {
@@ -89,22 +80,9 @@ let screens = {
         }
         
     },
-    // YoutubePlayerScreen: {
-    //     screen: YoutubePlayerScreen
-    // },
     
-    /* MaterialsScreen: {
-        screen: MaterialsScreen,
-        navigationOptions:{
-            title: 'חומרים'
-        }
-    }, */
-    
-    PresentationsScreen: {
-        screen: PresentationsScreen
-    },
-    VideosScreen: {
-        screen: VideosScreen,
+    VideosFragment: {
+        screen: VideosFragment,
         navigationOptions: {
             headerShown: false,
         }

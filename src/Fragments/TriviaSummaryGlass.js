@@ -1,5 +1,5 @@
 import {Dimensions, Button,Image,  View, Text, StyleSheet, TouchableOpacity, TouchableWithoutFeedback, FlatList} from 'react-native';
-import SummaryItem from '../../res/components/Trivia/SummaryItem'
+import SummaryItem from '../components/Trivia/SummaryItem'
 import {Grid, FormRow} from 'react'
 import {global} from '../../src/global/Style'
 

@@ -1,6 +1,6 @@
 import React, {useState, useEffect, useRef} from 'react';
 import {WebView, Dimensions, StyleSheet, View, Button, Text, Image, TouchableOpacity } from 'react-native';
-import BackButton from '../../../res/components/BackButton'
+import BackButton from '../../components/BackButton'
 import {useNavigate, useParams} from 'react-router-dom'
 
 import Lottie from 'react-lottie'

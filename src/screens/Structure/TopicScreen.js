@@ -2,11 +2,11 @@ import React, {useState, useEffect} from 'react';
 import {Animated, StyleSheet, View, FlatList } from 'react-native';
 
 import facade from '../../mainClasses/DatabaseFacade'
-import TopicListItem from '../../../res/components/Topics/TopicListItem'
-import TopicsTopBanner from '../../../res/components/Topics/TopicsTopBanner'
-import BackButton from '../../../res/components/BackButton';
+import TopicListItem from '../../components/Topics/TopicListItem'
+import TopicsTopBanner from '../../components/Topics/TopicsTopBanner'
+import BackButton from '../../components/BackButton';
 import {useNavigate, useParams} from 'react-router-dom'
-import GlassMenu from '../../../res/components/GlassMenu'
+import GlassMenu from  '../../Fragments/GlassMenu'
 
 export default function TopicScreen({navigation}){
     

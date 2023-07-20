@@ -1,16 +1,20 @@
     import React, { useRef, useEffect, useState} from 'react';
 import {global} from '../../global/Style'
 import {Animated, ScrollView, Image, StyleSheet, View, Button, Text } from 'react-native';
-import TriviaAnswer from '../../../res/components/Trivia/TriviaAnswer'
-import QuestionTitle from '../../../res/components/Trivia/QuestionTitle'
-import SummaryTicket from '../../../res/components/Trivia/SummaryTicket'
+import TriviaAnswer from '../../components/Trivia/TriviaAnswer'
+import QuestionTitle from '../../components/Trivia/QuestionTitle'
+import SummaryTicket from '../../components/Trivia/SummaryTicket'
 import { back } from 'react-native/Libraries/Animated/Easing';
 import { Easing } from 'react-native-reanimated';
-import BackButton from '../../../res/components/BackButton';
-import WrongButtonFragment from '../../Fragments/WrongButtonFragment'
+import BackButton from '../../components/BackButton';
+import WrongButtonFragment from '../../components/Trivia/WrongButtonFragment'
 import TriviaSummaryGlass from '../../../src/Fragments/TriviaSummaryGlass'
 import {useNavigate, useParams} from 'react-router-dom'
 
+
+//Resources
+import backgroundImage from '../../../res/assets/ Trivia/RecapBackground.png'
+import backgroundImage2 from '../../../res/assets/ Trivia/Group 58 (1).png'
 
 function BackgroundAnimatedComp(){
     const [saturation, setSaturation] = useState(100)
@@ -79,10 +83,10 @@ function BackgroundAnimatedComp(){
     return(
       <View style={styles.backgroundAnimatedComp}>
           <Animated.View style={[styles.backgroundGrid, {filter: "saturate(" + saturation.toString() + "%)", opacity: transitionOpacity, transform: [{translateX: backgroundOffset}]}]}>
-              <Image style={styles.fullSize} source={require('../../../res/assets/ Trivia/RecapBackground.png')}/>
+              <Image style={styles.fullSize} source={backgroundImage}/>
           </Animated.View>
           <Animated.View style={[styles.backgroundGrid, {right: "101%",opacity: transitionOpacity, transform: [{translateX: backgroundOffset}]}]}>
-              <Image style={styles.fullSize} source={require('../../../res/assets/ Trivia/Group 58 (1).png')}/>
+              <Image style={styles.fullSize} source={backgroundImage2}/>
           </Animated.View>
       </View>
   )

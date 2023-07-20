@@ -5,16 +5,14 @@ import React from 'react'
 
 import BranchScreen from '../screens/Structure/BranchScreen';
 
-import DefaultScreen from '../screens/DefaultScreen';
 
-import VideosScreen from '../screens/Videos/VideosScreen';
-import PresentationsScreen from '../screens/PresentationsScreen';
-import TriviaScreen from '../screens/Trivia/TriviaScreen';
+import VideosFragment from '../Fragments/VideosFragment';
+
+import TriviaScreen from '../Fragments/TriviaFragment';
 import SingleMaterialScreen from '../screens/Pdfs/SingleMaterialScreen';
 import PreEnteryLoadingScreen from '../screens/LoadingScreens/PreEnteryLoadingScreen';
 /* import YoutubePlayerScreen from '../screens/Videos/YoutebePlayerScreen'; */
 
-import AddMaterialScreen from '../screens/Upload/AddMaterialScreen'
 import QuestionsScreen from '../screens/Trivia/QuestionsScreen'
 import TriviaSummary from '../screens/Trivia/TriviaSummary'
 import QuestionRecap from '../screens/Trivia/QuestionRecap'

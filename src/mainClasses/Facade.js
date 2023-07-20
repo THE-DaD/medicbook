@@ -1,4 +1,4 @@
-// Import the functions you need from the SDKs you need
+/*// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getDatabase, ref, set, onValue} from "firebase/database";
 import MapObject from "./MapObject";
@@ -202,4 +202,4 @@ class Facade{
 
 let facade = new Facade();
 
-export default facade;
+export default facade;*/

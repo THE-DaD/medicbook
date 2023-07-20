@@ -2,7 +2,7 @@ import React, {useRef, useState, createContext} from 'react';
 import {Animated, StyleSheet, View, Button, Text, Image } from 'react-native';
 import facade, {recreateDB} from '../../mainClasses/DatabaseFacade'
 import LottieView from 'lottie-react-native';
-import LoadingAnimation from '../../../res/components/LoadingAnimation'
+import LoadingAnimation from '../../components/LoadingScreens/LoadingAnimation'
 
 import mainLogo from '../../../res/assets/LoadingScreen/Medicbook.png' 
 import medicalCorpsLogo from '../../../res/assets/LoadingScreen/medicalCorpsSign.png' 
@@ -133,7 +133,7 @@ export default function PreEnteryLoadingScreen({navigation, route}){
                                         }
                                         else if(searchParams.get("videos")){
                                             
-                                            navigation.navigate("VideosScreen")//, {topic: topic, pdfURL: searchParams.get("material")})
+                                            navigation.navigate("VideosFragment")//, {topic: topic, pdfURL: searchParams.get("material")})
                                         }
                                         else if(searchParams.get("trivia")){
                                             navigation.navigate("QuestionsScreen", {topicChosen: topic})
