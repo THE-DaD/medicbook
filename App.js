@@ -1,4 +1,7 @@
 //import { StatusBar } from 'expo-status-bar';
+
+//Nmp Version 8.5.2
+//Node Version v16.14.0
 import React, {useState} from 'react';
 import { Image, StyleSheet, Text, View, TouchableOpacity, BackHandler } from 'react-native';
 
