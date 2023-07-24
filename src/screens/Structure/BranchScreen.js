@@ -46,12 +46,6 @@ export default function BranchScreen(){
       pagePointer = facade.map
       if(branch){
         pagePointer = pagePointer.getChild(branch)
-        if(section){
-          pagePointer = pagePointer.getChild(section)
-          if( topic){
-            pagePointer = pagePointer.getChild(topic)
-          }
-        }
       }
       
     }
@@ -61,7 +55,8 @@ export default function BranchScreen(){
         Gets - index : int => the index of the button that was pressed  
         Does - Navigates the router to the next Screen Coresponding with the index 
       */
-      routerHistory.push(`BranchScreen`, `/${branch}/${section}`, NavigationOption.Next)
+      //routerHistory.push(`BranchScreen`, `/${branch}/${section}`, NavigationOption.Next)
+      
       routerNavigate(pagePointer.children[index].name, {state: {alreadyRendered: true}})
     }
     

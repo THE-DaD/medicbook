@@ -51,9 +51,8 @@ function getGlassMenu(props){
     
     
     function handlePress(index){
-        
         const [materialUrl, doesUrlAppearAgain, path] = props.facade.findMaterialUrl([props.branch, props.section, props.topic, things[index]])
-        props.navigationFunction("option?material=" + materialUrl)//+ things[index])
+        props.navigationFunction("action?material=" + materialUrl)//+ things[index])
     }
 
     function handleScroll(event){
@@ -307,53 +306,48 @@ function getGlassMenu(props){
             </Animated.View>
 
             
-                <Animated.View 
-                    style={[styleIcons.youtube, {left:  slidesAnimations[0].left, bottom: 196}]} 
-                    onClick={()=> {setFrag(1); startAnimation(1);}}>
-                        
-                        <Image style={[styles.fullScreen, {resizeMode: 'contain'}]} source={resource1} />
-                </Animated.View >
-                <Animated.View  style={[styleIcons.youtube, {opacity: slidesAnimations[0].opacity,left:  slidesAnimations[0].left, bottom: 196, pointerEvents: 'none'}]} >
-                    <Image style={[styles.fullScreen, {resizeMode: 'contain'}]} source={resource2} />
-                </Animated.View> 
+            <Animated.View 
+                style={[styleIcons.youtube, {left:  slidesAnimations[0].left, bottom: 196}]} 
+                onClick={()=> {setFrag(1); startAnimation(1);}}>
+                    
+                    <Image style={[styles.fullScreen, {resizeMode: 'contain'}]} source={resource1} />
+            </Animated.View >
+            <Animated.View  style={[styleIcons.youtube, {opacity: slidesAnimations[0].opacity,left:  slidesAnimations[0].left, bottom: 196, pointerEvents: 'none'}]} >
+                <Image style={[styles.fullScreen, {resizeMode: 'contain'}]} source={resource2} />
+            </Animated.View> 
 
-                    {/*Youtube Button */}
-                <Animated.View  
-                    style={[styleIcons.youtube, {left:  slidesAnimations[1].left, bottom: 134}]} 
-                    onClick={()=>{setFrag(2); startAnimation(2);}}>
-                        <Image style={[styles.fullScreen, {resizeMode: 'contain'}]} source={resource3} />
-                </Animated.View >
-                <Animated.View  style={[styleIcons.youtube, {opacity: slidesAnimations[1].opacity,left:  slidesAnimations[1].left, bottom: 134, pointerEvents: 'none'}]} >
-                    <Image style={[styles.fullScreen, {resizeMode: 'contain'}]} source={resource4} />
-                </Animated.View> 
+            {/*Youtube Button */}
+            <Animated.View  
+                style={[styleIcons.youtube, {left:  slidesAnimations[1].left, bottom: 134}]} 
+                onClick={()=>{setFrag(2); startAnimation(2);}}>
+                    <Image style={[styles.fullScreen, {resizeMode: 'contain'}]} source={resource3} />
+            </Animated.View >
+            <Animated.View  style={[styleIcons.youtube, {opacity: slidesAnimations[1].opacity,left:  slidesAnimations[1].left, bottom: 134, pointerEvents: 'none'}]} >
+                <Image style={[styles.fullScreen, {resizeMode: 'contain'}]} source={resource4} />
+            </Animated.View> 
 
-                <Animated.View 
-                    style={[styleIcons.youtube, {left:  slidesAnimations[2].left, bottom: 72}]} 
-                    onClick={()=>{setFrag(3); startAnimation(3);}}>
-                        <Image style={[styles.fullScreen, {resizeMode: 'contain'}]} source={resource5} />
-                </Animated.View >
-                <Animated.View  style={[styleIcons.youtube, {opacity: slidesAnimations[2].opacity,left:  slidesAnimations[2].left, bottom: 72, pointerEvents: 'none'}]} >
-                    <Image style={[styles.fullScreen, {resizeMode: 'contain'}]} source={resource6} />
-                </Animated.View> 
-
-
-                <Animated.View 
-                    style={[styleIcons.youtube, {left:  slidesAnimations[3].left, bottom: 10}]} 
-                    onClick={()=>{setFrag(4); startAnimation(4);}}>
-                        <Image style={[styles.fullScreen, {resizeMode: 'contain'}]} source={resource7} />
-                </Animated.View >
-                
-                <Animated.View  style={[styleIcons.youtube, {opacity: slidesAnimations[3].opacity,left:  slidesAnimations[3].left, bottom: 10, pointerEvents: 'none'}]} >
-                    <Image style={[styles.fullScreen, {resizeMode: 'contain'}]} source={resource8} />
-                </Animated.View> 
+            <Animated.View 
+                style={[styleIcons.youtube, {left:  slidesAnimations[2].left, bottom: 72}]} 
+                onClick={()=>{setFrag(3); startAnimation(3);}}>
+                    <Image style={[styles.fullScreen, {resizeMode: 'contain'}]} source={resource5} />
+            </Animated.View >
+            <Animated.View  style={[styleIcons.youtube, {opacity: slidesAnimations[2].opacity,left:  slidesAnimations[2].left, bottom: 72, pointerEvents: 'none'}]} >
+                <Image style={[styles.fullScreen, {resizeMode: 'contain'}]} source={resource6} />
+            </Animated.View> 
 
 
-
+            <Animated.View 
+                style={[styleIcons.youtube, {left:  slidesAnimations[3].left, bottom: 10}]} 
+                onClick={()=>{setFrag(4); startAnimation(4);}}>
+                    <Image style={[styles.fullScreen, {resizeMode: 'contain'}]} source={resource7} />
+            </Animated.View >
             
-                
-            
-            <TouchableWithoutFeedback style={{zIndex: 8, width: 100, height: '100%', position: 'absolute', right: 0, backgroundColor: 'black'} } onPress={DismissMenu}>
-                    <View style={{ width: 100, height: '100%', position: 'absolute', left: 0}}>
+            <Animated.View  style={[styleIcons.youtube, {opacity: slidesAnimations[3].opacity,left:  slidesAnimations[3].left, bottom: 10, pointerEvents: 'none'}]} >
+                <Image style={[styles.fullScreen, {resizeMode: 'contain'}]} source={resource8} />
+            </Animated.View> 
+
+            <TouchableWithoutFeedback style={{zIndex: 8, width: 600, height: '100%', position: 'absolute', right: 0, backgroundColor: 'black'} } onPress={DismissMenu}>
+                    <View style={{ width: "100%", height: '100%', position: 'absolute', left: 0}}>
                         {props.children}
                         
                     </View>       
@@ -382,7 +376,7 @@ function getGlassMenu(props){
         )
     }
 
-    function frag3(){
+    function frag4(){
         return (<TriviaScreen topic={props.topic}/>)
     }
 
@@ -399,7 +393,7 @@ function getGlassMenu(props){
                 return frag1()
                 break
             case(4):
-                return frag3()
+                return frag4()
                 break
 
         }

@@ -193,6 +193,13 @@ class DatabaseFacade{
     return this.videos != null
   }
 
+  setUp(callback){
+    //Setting UP necessery information from the DataBase
+    this.readQuestions()
+    this.readStructure(callback)
+    this.readAllMaterials(callback)
+    this.readAllVideos(callback)
+  }
   readAllMaterials(callbackMethod){
     
     let startCountRef = ref(this.database, 'SortedMaterials/')

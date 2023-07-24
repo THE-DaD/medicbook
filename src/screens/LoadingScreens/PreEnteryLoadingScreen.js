@@ -19,9 +19,11 @@ export default function PreEnteryLoadingScreen({navigation, route}){
     //Creating a loadinglistener that determines if we display the loading screen or not
     //setting a call back method at the facade, so when somthing changes it will trigger the loadinglistener to update
     
+    console.log(navigateRecorsivly(["jfklds", "fjkdls", "kfdjls", "kfdls"]))
 
     //Using Navigation Parameters
     let location = useLocation()
+    
     const routerNavigate = useNavigate()
     const {branch, section, topic, action} = useParams()
     const translation = useRef(
@@ -63,15 +65,13 @@ export default function PreEnteryLoadingScreen({navigation, route}){
     //
     const iconsSize = 75
     const signMovingUpAmount = -200
-
+    
+    //Important, setting Up Facade
     if(!facade.isMapSet()){
-      facade.readQuestions()
-      facade.readStructure(navigateNextScreen)
-      facade.readAllMaterials(navigateNextScreen)
-      facade.readAllVideos(navigateNextScreen)
-      
+      facade.setUp(callbackFromFacade)
     }
     else{
+        //Action when facade is set up
         navigateNext()
     }
     
@@ -79,93 +79,99 @@ export default function PreEnteryLoadingScreen({navigation, route}){
 
 
     let [infoCounter, setInfoCounter] = useState(0)
-    function navigateNextScreen(){
+    function callbackFromFacade(){
         console.log("call back method called")
+        
         //We need for all the request to come back... 3 requests currently
         //When it is called for the third time, it means all is loaded and we can navigate to the next screens
         if(infoCounter >= 2){
-            Animated.timing(translation, {
-                toValue: signMovingUpAmount,
-                duration: 1000,
-                delay: 50,
-                easing: Easing.bounce,
-                }).start(navigateNext);
+            navigateNext()
             setShowLoader(false)  
         }
         else{
             infoCounter+=1
         }
     }
-    
+
+    function navigateRecorsivly(pathArray){
+        //console.log(pathArray)
+        let temp = [...pathArray]
+        let param = temp.pop()
+        if(pathArray.length == 0){
+            let temp = [...pathArray]
+            
+            return param
+
+        }
+        return  param + "/" + navigateRecorsivly(temp) 
+
+    }
+
     function navigateNext(){
         let map = facade.map
-        setTimeout(() => {
-            if(branch){
-                let tempMap = map.getChild(branch)
-                if( tempMap === map){
-                    //Child Doesn't exist
-                    console.log("Branch: ", branch, "Doesn't exist")
-                    routerNavigate("/", {replace: true})
-                }
-                else{
-                    map = tempMap
-                    if(section){
-                        tempMap = map.getChild(section)
-                        if( tempMap === map){
-                            console.log(`section: ${section} doesnt exist`)
-                            routerNavigate("/" + branch, {replace: true})
-                        }
-                        else{
-                            map = tempMap
-                            if(topic){
-                                tempMap = map.getChild(topic)
-                                if( tempMap === map){
-                                    console.log("Topic Doesn't exist")
-                                    routerNavigate("/" + branch + "/" + section, {replace: true})
-                                }
-                                else{
-                                    //All branch section and topic are all valid
-                                    if(action){
-                                        let searchParams  = new URLSearchParams(location.search)
-                                        console.log("Search Params: " , searchParams.get("material"))
-                                        if(searchParams.get("material")){
-                                            navigation.navigate("SingleMaterialScreen", {topic: topic, pdfURL: searchParams.get("material")})
-                                        }
-                                        else if(searchParams.get("videos")){
-                                            
-                                            navigation.navigate("VideosFragment")//, {topic: topic, pdfURL: searchParams.get("material")})
-                                        }
-                                        else if(searchParams.get("trivia")){
-                                            navigation.navigate("QuestionsScreen", {topicChosen: topic})
-                                        }
-                                        
-                                    }
-                                    else{
-                                        navigation.navigate("TopicScreen", {branch: branch, section: section, topic: topic})
-                                    }
-                                    
-                                    
-                                }
-                            }
-                            else{
-                                navigation.navigate("TopicScreen", {branch: branch, section: section, topic: topic})
-                            }
-                        }
-                    }
-                    else{
-                        navigation.navigate("BranchScreen", {branch: branch, section: section, topic: topic})
-                    }
-                    
-                
-                }
+        
+        if(branch){
+            let tempMap = map.getChild(branch)
+            if( tempMap === map){
+                //Child Doesn't exist
+                console.log("Branch: ", branch, "Doesn't exist")
+                routerNavigate("/", {replace: true})
             }
             else{
-                navigation.navigate("BranchScreen", {branch: branch, section: section, topic: topic})
+                map = tempMap
+                if(section){
+                    tempMap = map.getChild(section)
+                    if( tempMap === map){
+                        console.log(`section: ${section} doesnt exist`)
+                        routerNavigate("/" + branch, {replace: true})
+                    }
+                    else{
+                        map = tempMap
+                        if(topic){
+                            tempMap = map.getChild(topic)
+                            if( tempMap === map){
+                                console.log("Topic Doesn't exist")
+                                routerNavigate("/" + branch + "/" + section, {replace: true})
+                            }
+                            else{
+                                //All branch section and topic are all valid
+                                if(action){
+                                    let searchParams  = new URLSearchParams(location.search)
+                                    console.log(searchParams, "Search Params ******")
+                                    console.log("Search Params: " , searchParams.get("material"))
+                                    if(searchParams.get("material")){
+                                        navigation.navigate("SingleMaterialScreen", {topic: topic, pdfURL: searchParams.get("material")})
+                                    }
+                                    else if(searchParams.get("videos")){
+                                        navigation.navigate("VideosFragment")//, {topic: topic, pdfURL: searchParams.get("material")})
+                                    }
+                                    else if(searchParams.get("trivia")){
+                                        navigation.navigate("QuestionsScreen", {topicChosen: topic})
+                                    }
+                                    
+                                }
+                                else{
+                                    navigation.navigate("TopicScreen", {branch: branch, section: section, topic: topic})
+                                }
+                                
+                                
+                            }
+                        }
+                        else{
+                            navigation.navigate("TopicScreen", {branch: branch, section: section, topic: topic})
+                        }
+                    }
+                }
+                else{
+                    navigation.navigate("BranchScreen", {branch: branch, section: section, topic: topic})
+                }
             }
+        }
+        else{
+            navigation.navigate("BranchScreen", {branch: branch, section: section, topic: topic})
+        }
             
-            //navigation.navigate("SectionsScreen", {branch: branch, section: section, topic: topic}) 
-            
-          }, 10);
+
 
           
         

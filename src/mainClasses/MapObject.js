@@ -3,8 +3,9 @@ class MapObject{
         this.name = name
         this.displayName = name
         this.children = []
-        this.index = 100
         this.parent = null
+
+        this.index = 100
         this.color =  "#F17581"
         this.hueRotation = 50
     }
@@ -17,6 +18,7 @@ class MapObject{
     }
 
     static displayNameAndIndexInstance(name, displayName, index){
+        //Clasic Constructor, Used to set name display Name and Index
         let mapObject = new MapObject(name);
         mapObject.setDisplayName(displayName);
         mapObject.index = index
@@ -25,9 +27,7 @@ class MapObject{
 
     setDisplayName(displayName){
         this.displayName = displayName
-
     }
-
 
     setHueRotationandColor(hueRotation, color){
         console.log("HeuRotation: ", hueRotation, "Color: ", color)

@@ -41,7 +41,8 @@ export default function TopicScreen({navigation}){
     }, [branch, section, topic])
     
     
-     UpdateMap()
+    UpdateMap()
+
     function UpdateMap(){
         /* 
             Does -  Updating the map into the specific Section
@@ -120,7 +121,6 @@ export default function TopicScreen({navigation}){
             }
         
     }
-
 
 
     return(

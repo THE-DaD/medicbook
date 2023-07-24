@@ -80,7 +80,6 @@ class TriviaScreen extends React.Component{
             <View style={styles.container}>
                 <BackButton onPress={this.goBack}/>
                 <QuestionTitle question={"שאלה 1:"} text={"על מה צריך ללחוץ כדי להתחיל?"}/>
-                
                 <TriviaAnswer text={"על זה"} onPress={this.moveForward}/>
                 <TriviaAnswer text={"על זה לא"} onPress={this.wrongButtonPress}/>
                 <TriviaAnswer text={"על זה בטוח לא"} onPress={this.wrongButtonPress}/>
