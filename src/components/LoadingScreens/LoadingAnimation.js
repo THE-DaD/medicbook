@@ -5,7 +5,7 @@ import LottieView from 'lottie-react-native';
 import {StyleSheet, Text} from 'react-native';
 
 //Resources
-import animation from '../../res/animations/loadingAnimation.json'
+import animation from '../../../res/animations/loadingAnimation.json'
 
 
 export default class LoadingAnimation extends React.Component {

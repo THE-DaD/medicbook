@@ -1,12 +1,12 @@
 import {View, Image, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import { requireNativeViewManager } from 'expo-modules-core';
 import { Dimensions } from 'react-native';
-import ScreenSize, {getCSS} from '../../src/mainClasses/ScreenSize'
+import ScreenSize, {getCSS} from '../../../src/mainClasses/ScreenSize'
 
 
 //Resources
-import medicbookSignImage from '../../res/assets/LoadingScreen/Medicbook.png'
-import topRectenglesImgae from '../../res/assets/ChooseBranch/TopBannerRectengles.png'
+import medicbookSignImage from '../../../res/assets/LoadingScreen/Medicbook.png'
+import topRectenglesImgae from '../../../res/assets/ChooseBranch/TopBannerRectengles.png'
 
 const TopBanner = (props) =>{
     let imgSources = [topRectenglesImgae, topRectenglesImgae]

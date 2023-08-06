@@ -1,6 +1,6 @@
 import {Dimensions, Button, View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import {global} from '../../../src/global/Style'
-import ScreenSize, {getCSS} from '../../src/mainClasses/ScreenSize'
+import ScreenSize, {getCSS} from '../../../src/mainClasses/ScreenSize'
 
 const MapObjectView = (props) => {
     //Renders a text to a button

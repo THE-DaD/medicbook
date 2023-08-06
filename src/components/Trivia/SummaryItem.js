@@ -1,8 +1,8 @@
  import {View, TouchableOpacity, StyleSheet, Text, Image} from 'react-native'
 
 //Resources
-import correctAnswerImage from '../../res/assets/ Trivia/correctAnswer.png'
-import wrongAnswerImage from '../../res/assets/ Trivia/wrongAnswer.png'
+import correctAnswerImage from '../../../res/assets/Trivia/correctAnswer.png'
+import wrongAnswerImage from '../../../res/assets/Trivia/wrongAnswer.png'
 const summaryItem = (props) =>{
 
     let right = props.correct

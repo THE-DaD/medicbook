@@ -2,7 +2,7 @@ import {Dimensions, Button, View, Text, Image, StyleSheet, TouchableOpacity} fro
 import {global} from '../../../src/global/Style'
 
 //Resources
-import materialButtonImgae from '../../res/assets/glassMenu/MaterialButtonEdipos.png' 
+import materialButtonImgae from '../../../res/assets/glassMenu/materialButton.png'
 
 let maxStringLetters = 60;
 

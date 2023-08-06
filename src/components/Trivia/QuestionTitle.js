@@ -1,8 +1,8 @@
 import {Dimensions, Button, Image, View, Text, StyleSheet, TouchableOpacity} from 'react-native';
-import {global} from '../../src/global/Style'
+import {global} from '../../../src/global/Style'
 
 //Resources
-import questionNumberRectImage from '../../res/assets/ Trivia/questionNumberRect.png'
+import questionNumberRectImage from '../../../res/assets/Trivia/questionNumberRect.png'
 
 const maxLetters = 30
 let preferedFontItemSize = global.preferedFontItemSize

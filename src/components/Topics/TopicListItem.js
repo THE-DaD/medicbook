@@ -1,6 +1,6 @@
 import {View, Text} from "react-native"
 import { TouchableOpacity } from "react-native-gesture-handler";
-import ScreenSize, {getCSS} from '../../src/mainClasses/ScreenSize'
+import ScreenSize, {getCSS} from '../../../src/mainClasses/ScreenSize'
 
 export default function TopicListItem(props) {
     let color = '#'+Math.floor(Math.random()*16777215).toString(16); // random color

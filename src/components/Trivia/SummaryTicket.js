@@ -1,5 +1,5 @@
 import {Dimensions, Button, Image, View, Text, StyleSheet, TouchableOpacity, Animated} from 'react-native';
-import {global} from '../../src/global/Style'
+import {global} from '../../../src/global/Style'
 import TriviaAnswer from './TriviaAnswer';
 
 
