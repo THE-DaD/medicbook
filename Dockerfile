@@ -19,9 +19,13 @@ COPY . .
 
 RUN ls
 RUN pwd
-RUN ls res/assets/LoadingScreen
-RUN du -sh res/assets/LoadingScreen/Bahad10.png
-RUN du -sh res/assets/LoadingScreen/MedicBook.png
+
+RUN ls res/assets/Trivia
+RUN du -sh res/assets/Trivia/xButton.png
+RUN du -sh res/assets/Trivia/questionNumberRect.png
+RUN du -sh res/assets/Trivia/correctAnswer.png
+RUN du -sh res/assets/Trivia/wrongAnswer.png
+
 RUN npm install -g npm@8.5.2 --unsafe-perm --allow-root expo-cli@latest yarn --force
 
 RUN npx expo-cli init react_native_app --npm --template bare-minimum
