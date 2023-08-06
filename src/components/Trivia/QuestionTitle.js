@@ -2,7 +2,7 @@ import {Dimensions, Button, Image, View, Text, StyleSheet, TouchableOpacity} fro
 import {global} from '../../../src/global/Style'
 
 //Resources
-import questionNumberRectImage from '../../../res/assets/Trivia/questionnumberrect.png'
+import questionNumberRectImage from '../../../res/assets/Trivia/questionNumberRect.png'
 
 const maxLetters = 30
 let preferedFontItemSize = global.preferedFontItemSize

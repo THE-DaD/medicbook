@@ -7,7 +7,7 @@ const maxLetters = 30
 let preferedFontItemSize = global.preferedFontItemSize
 
 //Resources
-import xButtonImage from '../../../res/assets/ Trivia/xButton.png'
+import xButtonImage from '../../../res/assets/Trivia/xButton.png'
 
 
 const WrongButtonFragment = (props) => {

@@ -4,8 +4,8 @@ import facade, {recreateDB} from '../../mainClasses/DatabaseFacade'
 import LottieView from 'lottie-react-native';
 import LoadingAnimation from '../../components/LoadingScreens/LoadingAnimation'
 
-import mainLogo from '../../../res/assets/LoadingScreen/Medicbook.png' 
-import medicalCorpsLogo from '../../../res/assets/LoadingScreen/medicalcorpssign.png' 
+import mainLogo from '../../../res/assets/LoadingScreen/MedicBook.png' 
+import medicalCorpsLogo from '../../../res/assets/LoadingScreen/MedicalCorpsSign.png' 
 import bahad10Logo from '../../../res/assets/LoadingScreen/Bahad10.png' 
 
 import {useNavigate, useLocation, useParams} from "react-router-dom"
