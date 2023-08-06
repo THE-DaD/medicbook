@@ -5,7 +5,7 @@ import ScreenSize, {getCSS} from '../../../src/mainClasses/ScreenSize'
 
 
 //Resources
-import medicbookSignImage from '../../../res/assets/LoadingScreen/Medicbook.png'
+import medicbookSignImage from '../../../res/assets/LoadingScreen/MedicBook.png'
 import topRectenglesImgae from '../../../res/assets/ChooseBranch/TopBannerRectengles.png'
 
 const TopBanner = (props) =>{
