@@ -13,8 +13,8 @@ import {useNavigate, useParams} from 'react-router-dom'
 
 
 //Resources
-import backgroundImage from '../../../res/assets/ Trivia/RecapBackground.png'
-import backgroundImage2 from '../../../res/assets/ Trivia/Group 58 (1).png'
+import backgroundImage from '../../../res/assets/Trivia/RecapBackground.png'
+import backgroundImage2 from '../../../res/assets/Trivia/Group 58 (1).png'
 
 function BackgroundAnimatedComp(){
     const [saturation, setSaturation] = useState(100)

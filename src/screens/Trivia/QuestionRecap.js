@@ -106,7 +106,7 @@ export default function QuestionScreen({navigation}){
     return(
         <View style={[styles.container]}>
             <Animated.View style={[styles.backgroundGrid, {opacity: state.opacityBG1, transform: [{translateX: backgroundOffset}]}]}>
-                <Image style={styles.fullSize} source={require('../../../res/assets/ Trivia/RecapBackground.png')}/>
+                <Image style={styles.fullSize} source={require('../../../res/assets/Trivia/RecapBackground.png')}/>
             </Animated.View>
             
 

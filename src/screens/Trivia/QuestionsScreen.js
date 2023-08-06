@@ -11,7 +11,7 @@ import Question from '../../mainClasses/Question'
 import facade from '../../mainClasses/DatabaseFacade'
 import {useNavigate, useParams} from 'react-router-dom'
 
-import BackgroundImage from '../../../res/assets/ Trivia/abstract1.jpeg'
+import BackgroundImage from '../../../res/assets/Trivia/abstract1.jpeg'
 
 function BackgroundAnimatedComp(){
     const state = {
