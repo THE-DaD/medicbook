@@ -18,7 +18,7 @@ COPY . .
 RUN ls
 RUN pwd
 RUN ls res/assets/ChooseBranch
-RUN du -sh res/assets/ChooseBranch/backButton.png
+RUN du -sh res/assets/LoadingScreen/bahad10.png
 RUN npm install -g npm@8.5.2 --unsafe-perm --allow-root expo-cli@latest yarn --force
 
 RUN npx expo-cli init react_native_app --npm --template bare-minimum
