@@ -15,6 +15,8 @@ ENV PATH /opt/app/.bin:$PATH
 
 COPY . .
 
+RUN las
+RUN pwd
 RUN npm install -g npm@8.5.2 --unsafe-perm --allow-root expo-cli@latest yarn --force
 
 RUN npx expo-cli init react_native_app --npm --template bare-minimum
