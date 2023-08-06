@@ -17,7 +17,7 @@ COPY . .
 
 RUN ls
 RUN pwd
-RUN ls res/assets/ChooseBranch
+RUN ls res/assets/LoadingScreen
 RUN du -sh res/assets/LoadingScreen/bahad10.png
 RUN npm install -g npm@8.5.2 --unsafe-perm --allow-root expo-cli@latest yarn --force
 
