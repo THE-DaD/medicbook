@@ -1,5 +1,5 @@
 import {Dimensions, Button, View, Text, StyleSheet, TouchableOpacity} from 'react-native';
-import {global} from '../../../src/global/Style'
+import {global} from '../../src/global/Style'
 
 const maxLetters = 120
 let preferedFontItemSize = 16

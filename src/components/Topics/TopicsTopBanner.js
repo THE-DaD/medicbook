@@ -2,7 +2,7 @@ import {View, Image, Text, StyleSheet, TouchableOpacity} from 'react-native';
 
 
 //Resources
-import topBannerImage2 from '../../../res/assets/TopicsScreen/TopBanner2.svg'
+import topBannerImage2 from '../../res/assets/TopicsScreen/TopBanner2.svg'
 export default function TopicsTopBanner(props) {
     var [BannerTextFontStartingSize, BannerTextFontSmallestSize] = getBannerTextFont(props.styleProps.sectionName.length)
     

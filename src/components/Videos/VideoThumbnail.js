@@ -1,6 +1,6 @@
 import react from 'react';
 import {View, Text, StyleSheet, TouchableOpacity, Image} from 'react-native';
-import {global} from '../../../src/global/Style'
+import {global} from '../../src/global/Style'
 
 
 const VideoThumbnail = (props) => {

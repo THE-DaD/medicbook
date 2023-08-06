@@ -1,6 +1,6 @@
 import {Dimensions, Button,Image, Animated,  View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import {useRef, useEffect} from 'react'
-import {global} from '../../../src/global/Style'
+import {global} from '../../src/global/Style'
 import { Easing } from 'react-native-reanimated';
 
 const maxLetters = 30

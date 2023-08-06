@@ -3,7 +3,7 @@ import { requireNativeViewManager } from 'expo-modules-core';
 import { Dimensions } from 'react-native';
 
 //Resources
-import BottomBannerRectengles from '../../../res/assets/ChooseBranch/BottomBannerRectengles.png'
+import BottomBannerRectengles from '../../res/assets/ChooseBranch/BottomBannerRectengles.png'
 
 
 const BottomBanner = (props) =>{
