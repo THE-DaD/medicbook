@@ -2,7 +2,7 @@ import react from 'react';
 import {Dimensions, Image, StyleSheet, TouchableOpacity} from 'react-native';
 
 //Resources
-import BackbuttonImgae from '../../res/assets/ChooseBranch/BackButton.png'
+import BackbuttonImgae from '../../res/assets/ChooseBranch/backButton.png'
 const BackButton = (props) => {
     return(
         <TouchableOpacity style={styles.backButtonContainer} onPress={props.onPress}>
