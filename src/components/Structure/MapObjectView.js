@@ -1,6 +1,7 @@
-import {Dimensions, Button, View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import {Dimensions, Button, View, Text, StyleSheet, Image ,TouchableOpacity} from 'react-native';
 import {global} from '../../../src/global/Style'
 import ScreenSize, {getCSS} from '../../../src/mainClasses/ScreenSize'
+import ironSwordButton from '../../../res/assets/glassMenu/ironSwordButton.png';
 
 const MapObjectView = (props) => {
     //Renders a text to a button
@@ -53,13 +54,29 @@ const MapObjectView = (props) => {
 
     let {text, textItemFontSize} = getTextAndTextItemFontSize(props.text)
 
-    return(
-        <View style={styles.container}>
-            <TouchableOpacity  style= {[styles.item, {width: buttonWidth, aspectRatio: buttonRatio}]} onPress={props.onPress}>
-                <Text style={[styles.itemText,{fontSize: fontSize}]}>{text}</Text>
-            </TouchableOpacity>
-        </View>
-    )
+    if(text === "חרבות ברזל"){
+        return(
+            <View style={styles.container}>
+                {/* <linearGradient color={['#454242', '#C80707E5', '#CB070713', '#DB070700', '#DB070700', '#DB070700']}  style={styles.background}> */}
+            
+                <TouchableOpacity  style= {[styles.itemIronSwords, {backgroundColor: 'transparent', backgroundImage: `url(${ironSwordButton})`,backgroundSize: 'cover',
+    backgroundPosition: 'center',width: buttonWidth, aspectRatio: buttonRatio}]} onPress={props.onPress}>
+
+                    <Text style={[styles.itemTextIronSwords,{fontSize: fontSize * 1.1}]}>{text}</Text>
+                </TouchableOpacity>
+                {/* </linearGradient> */}
+            </View>
+        )
+    }
+    else{
+        return(
+            <View style={styles.container}>
+                <TouchableOpacity  style= {[styles.item, {width: buttonWidth, aspectRatio: buttonRatio}]} onPress={props.onPress}>
+                    <Text style={[styles.itemText,{fontSize: fontSize}]}>{text}</Text>
+                </TouchableOpacity>
+            </View>
+        )
+    }
 }
 
 
@@ -74,12 +91,43 @@ const styles = StyleSheet.create({
     container: {
 
     },
-    item: {
-        backgroundColor: '#E3EEFF',
+    background: {
+        position: 'absolute',
+        left: 0,
+        right: 0,
+        top: 0,
+        height: '100%',
+      },
+    itemIronSwords: {
         borderRadius: 13,
         marginBottom: 15,
         marginTop: 15,
-        
+        justifyContent: 'center',
+        alignItems: "center",
+        alignSelf: "center",
+        flexDirection: "row",
+
+        minWidth: 150,
+        border: 2,
+
+    },
+
+    itemTextIronSwords: {
+        textAlignVertical: "center",
+        textAlignHorizontal: "center",
+        textAlign: "center",
+        /*fontFamily: global.fontFamily,
+        */
+        fontFamily: 'Heebo',
+        color: '#FFF1CE',
+    },
+
+    item: {
+        borderStartColor: '#E3EEFF',
+        borderRadius: 13,
+        marginBottom: 15,
+        marginTop: 15,
+        backgroundColor: '#E3EEFF',
         justifyContent: 'center',
         alignItems: "center",
         alignSelf: "center",

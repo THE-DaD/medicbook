@@ -295,9 +295,9 @@ function getGlassMenu(props){
             <BackButton onPress={DismissMenu}/>
             
             <Animated.View style={{width: titleWidth - 120 + 3 * props.topicDisplayName.length, height: 100, position: 'absolute', top: 60, opacity: 0.4, zIndex: 18, borderRadius: 20, marginRight: -20, right: glassAnimationVal,
-                borderWidth: 2, backgroundColor: 'rgba(220,220,220,0.23)', borderColor: "rgba(213, 213, 213, 0.7)", shadowColor: 'black', overflow: 'hidden', 
+                borderWidth: 2, backgroundColor: 'rgba(205, 232, 255, 0.92)', borderColor: "rgba(213, 213, 213, 0.7)", shadowColor: 'black', overflow: 'hidden', 
                 shadowRadius: 10,}}>
-                <Animated.Text style={{right: 30, width: '90%', height: '95%', fontSize: titleFontSize, zIndex: 17, color: '#bcbcbc', fontWeight: 'bold', direction: 'rtl', lineHeight: '80%', fontFamily: "Heebo", position: 'absolute', top: "50%", marginTop: -(titleHeight/2)}} > 
+                <Animated.Text style={{right: 30, width: '90%', height: '95%', fontSize: titleFontSize, zIndex: 17, opacity: 1 ,color: '#000000', fontWeight: 'bold', direction: 'rtl', lineHeight: '80%', fontFamily: "Heebo", position: 'absolute', top: "60%", marginTop: -(titleHeight/2)}} > 
                 {props.topicDisplayName}
                 </Animated.Text>
             </Animated.View>

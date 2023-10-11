@@ -1,5 +1,5 @@
 # pull base image
-FROM node:18.0.0-buster-slim
+FROM node:16.;4.0-buster-slim
 
 RUN npm i --unsafe-perm --allow-root -g npm@latest expo-cli@latest
 
@@ -20,7 +20,7 @@ WORKDIR /opt/react_native_app/app
 # for development, we bind mount volumes; comment out for production
 
 # default to port 19006 for node, and 19001 and 19002 (tests) for debug
-ARG PORT=19006
+ARG PORT_NUMBER
 ENV PORT $PORT
 EXPOSE $PORT
 
