@@ -1,7 +1,7 @@
 import {Dimensions, Button, View, Text, StyleSheet, Image ,TouchableOpacity} from 'react-native';
 import {global} from '../../../src/global/Style'
 import ScreenSize, {getCSS} from '../../../src/mainClasses/ScreenSize'
-import ironSwordButton from '../../../res/assets/glassMenu/ironSwordButton.png';
+import ironSwordButton from '../../../res/assets/glassMenu/IronSwordButton.png';
 
 const MapObjectView = (props) => {
     //Renders a text to a button

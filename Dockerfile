@@ -1,6 +1,7 @@
 # pull base image
 FROM node:16.10.0-buster-slim
 
+
 # default to port 19006 for node, and 19001 and 19002 (tests) for debug
 ARG NODE_ENV=production
 ENV NODE_ENV $NODE_ENV
