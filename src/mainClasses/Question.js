@@ -1,4 +1,3 @@
-import { timingSafeEqual } from "crypto";
 
 class Question{
     constructor(question, correctAnswer, allAnswers){
